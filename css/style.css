@@ -23,6 +23,16 @@ html,
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.page,
+main {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -53,18 +63,25 @@ img {
 }
 
 .skip-link {
-  position: absolute;
-  left: -9999px;
-  top: 0;
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
   background: var(--color-primary);
   color: #fff;
   padding: 0.75rem 1rem;
   z-index: 999;
+  border-radius: 10px;
+  transform: translateY(-220%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .hero {
@@ -3682,7 +3699,7 @@ body.has-menu-open {
     background: #fff;
     border-left: 1px solid #d7e2ec;
     box-shadow: -16px 0 30px rgba(11, 31, 58, 0.15);
-    transform: translateX(105%);
+    transform: translateX(100%);
     visibility: hidden;
     pointer-events: none;
     opacity: 0;
